@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<robot name="mrb3s" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Robot Base -->
+  <link name="mrb3s/base_footprint">
+    <visual>
+      <origin xyz="-.008 0 -.0202" rpy="0 0 1.5707"/>
+      <geometry>
+        <mesh filename="package://mrb3_description/meshes/MRB3.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.112 -0.10 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://mrb3_description/meshes/Wheel.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.112 0.10 0" rpy="0 0 3.14159"/>
+      <geometry>
+        <mesh filename="package://mrb3_description/meshes/Wheel.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.1135 -0.10 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://mrb3_description/meshes/Wheel.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.1135 0.10 0" rpy="0 0 3.14159"/>
+      <geometry>
+        <mesh filename="package://mrb3_description/meshes/Wheel.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="mrb3s/RPLIDAR_A1M8/Base/lidar">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://mrb3_description/meshes/rplidar.dae" scale="1 1 1" />
+      </geometry>
+    </visual>
+  </link>
+
+
+  <joint name="Joint" type="fixed">
+    <origin xyz="0.042 0 0.096" rpy="0 0 0"/>
+    <parent link="mrb3s/base_footprint"/>
+    <child link="mrb3s/RPLIDAR_A1M8/Base/lidar"/>
+  </joint>
+
+</robot>
