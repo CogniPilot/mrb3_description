@@ -2,7 +2,9 @@
 <robot name="mrb3s" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <!-- Robot Base -->
-  <link name="mrb3s/base_footprint">
+  <link name="base_footprint"/>
+  
+  <link name="base_link">
     <visual>
       <origin xyz="-.008 0 -.0202" rpy="0 0 1.5707"/>
       <geometry>
@@ -35,7 +37,7 @@
     </visual>
   </link>
 
-  <link name="mrb3s/RPLIDAR_A1M8/Base/lidar">
+  <link name="base_laser">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
@@ -44,11 +46,16 @@
     </visual>
   </link>
 
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>
 
-  <joint name="Joint" type="fixed">
+  <joint name="laser_joint" type="fixed">
     <origin xyz="0.042 0 0.096" rpy="0 0 0"/>
-    <parent link="mrb3s/base_footprint"/>
-    <child link="mrb3s/RPLIDAR_A1M8/Base/lidar"/>
+    <parent link="base_link"/>
+    <child link="base_laser"/>
   </joint>
 
 </robot>
